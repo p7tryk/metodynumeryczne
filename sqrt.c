@@ -31,7 +31,7 @@ double newsqrt(double input)
 int main()
 {
   double i = 0;
-
+  printf("podaj liczbe do zpierwiastkowania\n");
   scanf("%lf",&i);
 
   double x = i;
@@ -39,7 +39,7 @@ int main()
   
   i=newsqrt(i);
   x=sqrt(x);
-  printf("moj %lf,\nlib %lf,\nerr %lf\n", i, x, (double) i-x);
+  printf("moj %lf,\nlib %lf,\nerr %lf\nper %lf.2 \n", i, x, (double) i-x, (double) (i/x*100)-100);
   
   
 
