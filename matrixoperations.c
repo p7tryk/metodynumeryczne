@@ -31,13 +31,17 @@ void printMatrix(int matrix[][3], int row, int col)
 	  printf("\n\n");
       }
 }
-void addMatrix(int a[][3],int b[][3],int c[][3], int rowA, int colA,int rowB,int colB)
+void addMatrix(int a[][3],int b[][3],int c[][3], int rowA, int colA,int rowB,int colB,int sign)
 {
+  if(sign!=0)
+    sign=-1;
+  else
+    sign=0;
   for(int i=0;i<rowA;i++)
     {
       for(int n=0;n<colA;n++)
 	{
-	  c[i][n] = a[i][n]+b[i][n];
+	  c[i][n] = a[i][n]+b[i][n]*-1;
 	}
     }
   
@@ -83,7 +87,7 @@ int main()
     {7,8,9}
   };
   createMatrix(a,b,rowA,colA,rowB,colB);
-  addMatrix(a,b,c,rowA,colA,rowB,colB);
+  addMatrix(a,b,c,rowA,colA,rowB,colB,0);
   printMatrix(c,rowA,colA);
   multiplyMatrix(a,b,d,rowA,colA,rowB,colB);
   printMatrix(d,rowA,colA);
