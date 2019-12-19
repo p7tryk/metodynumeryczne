@@ -48,11 +48,10 @@ double bisekcja(double a,double b,double (*wielomianptr)(double),double epsilon)
   
   while(bezwzgld(out)>epsilon)
     {
-      
-      out = (*wielomianptr)(c);
       printf("a=%lf,b=%lf,c=%lf,y(c)=%lf\n",a,b,c,out);
-      c = a+bezwzgld(b-a)/2;
+      out = (*wielomianptr)(c);
       
+      c = a+bezwzgld(b-a)/2;
       if(check(a,c,wielomianptr))
 	{
 	  b=c;
@@ -79,6 +78,6 @@ double bisekcja(double a,double b,double (*wielomianptr)(double),double epsilon)
 int main()
 {
   //printf("%lf\n",bezwzgld(-4));
-  printf("%lf\n",bisekcja(1,2 ,&wielomian2,0.01));
+  printf("%lf\n",bisekcja(1,2 ,&wielomian2,0.1));
 
 }
