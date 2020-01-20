@@ -31,8 +31,26 @@ double trapez(double (*wielomianptr)(double),double begin, double end, double ok
   if(begin+okres>end)
     return 0;
   double head=begin;
-  double calka=0;
+  double calka=((*wielomianptr)(head)+(*wielomianptr)(head+okres))/4*okres;
+  head+=okres;
+  double test=0;
   
+  while(head<end)
+    {
+      test=((*wielomianptr)(head)+(*wielomianptr)(head+okres))/2*okres;
+      printf("%lf,",test);
+      calka+=test;
+      head+=okres;
+    }
+  return calka;
+}
+/*
+double simpson(double (*wielomianptr)(double),double begin, double end, double n)
+{
+  if(begin+okres>end)
+    return 0;
+  double head=begin;
+  double calka=0;
   while(head<end)
     {
       calka+=((*wielomianptr)(head)+(*wielomianptr)(head+okres))/2*okres;
@@ -40,6 +58,7 @@ double trapez(double (*wielomianptr)(double),double begin, double end, double ok
     }
   return calka;
 }
+*/
 double bezwzgld(double a)
 {
   if(a<0)
@@ -59,14 +78,14 @@ int main()
   printf("n = %.3lf h= %.3lf\n",n,h);
   printf("prostokat1\t%lf\n",prostokat(&wielomian2,begin,end,h,0));
   printf("prostokat2\t%lf\n",prostokat(&wielomian2,begin,end,h,1));
-  printf("trapez  \t%lf\n",trapez(&wielomian2,begin,end,h));
+  printf("\ntrapez  \t%lf\n",trapez(&wielomian2,begin,end,h));
 
   n = 4;
   h = bezwzgld((begin-end)/n);
   printf("n = %.3lf h= %.3lf\n",n,h);
   printf("prostokat1\t%lf\n",prostokat(&wielomian2,begin,end,h,0));
   printf("prostokat2\t%lf\n",prostokat(&wielomian2,begin,end,h,1));
-  printf("trapez  \t%lf\n",trapez(&wielomian2,begin,end,h));
+  printf("\ntrapez  \t%lf\n",trapez(&wielomian2,begin,end,h));
   
   /*
   for(double dokladnosc=1;dokladnosc>0.1;dokladnosc=dokladnosc/2)
